@@ -1,0 +1,28 @@
+# Schema Tiêu Chí Chấm Điểm Thích Ứng (Adaptive Rubric Schema)
+version: "1.0"
+module_type: "open_challenge"
+
+criteria:
+  - id: "conceptual_understanding"
+    name: "Hiểu Bản Chất Khái Niệm"
+    weight: 0.4
+    levels:
+      0: "Hiểu sai hoặc nhầm lẫn giữa các khái niệm cốt lõi."
+      1: "Hiểu đúng định nghĩa nhưng diễn đạt còn phụ thuộc văn mẫu, chưa tự giải thích được."
+      2: "Nắm vững bản chất, tự diễn giải bằng ví dụ mới và phân biệt rõ các biên giới hạn."
+
+  - id: "evidence_grounding"
+    name: "Căn Cứ Bằng Chứng & Nguồn Dẫn"
+    weight: 0.3
+    levels:
+      0: "Khẳng định không căn cứ hoặc trích dẫn sai lệch đoạn văn nguồn."
+      1: "Trích dẫn đúng đoạn nguồn [¶N] hoặc [S#] nhưng phần biện luận chưa chặt chẽ."
+      2: "Phân tích sắc bén, gắn kết trực tiếp lập luận với bằng chứng xác thực từ tài liệu."
+
+  - id: "practical_application"
+    name: "Khả Năng Vận Dụng & Tư Duy Hệ Thống"
+    weight: 0.3
+    levels:
+      0: "Đề xuất giải pháp bất khả thi hoặc vi phạm các bất biến kỹ thuật."
+      1: "Đưa ra giải pháp chạy được nhưng chưa tối ưu hoặc còn tiềm ẩn rủi ro phụ trợ."
+      2: "Thiết kế giải pháp hoàn chỉnh, có phân tích đánh đổi (trade-offs) và kịch bản lỗi."

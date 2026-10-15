@@ -1,0 +1,7 @@
+# Chapter 3: Paradigm Overview
+
+Structured programming was the first paradigm to be adopted, but not the first to be invented. It was discovered by Edsger Wybe Dijkstra in 1968. Dijkstra showed that the use of unrestrained jumps (goto statements) is harmful to program structure.
+
+As we will see, Dijkstra replaced those jumps with the familiar if/then/else and do/while/until constructs. We can summarize the structured programming paradigm as follows: Structured programming imposes discipline on direct transfer of control.
+
+Object-oriented programming was discovered by Ole-Johan Dahl and Kristen Nygaard in 1966. They noticed that the function call stack frame in the ALGOL language could be moved to a heap, allowing local variables to persist long after the function returned. This was the invention of Polymorphism.

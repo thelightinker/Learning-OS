@@ -1,0 +1,35 @@
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Scratch & Temporary workspace files
+.tmp/
+scratch/
+tmp/
+*.tmp
+
+# Operating System junk
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+._*
+
+# IDE & Editor local states
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment & Local Secrets
+.env
+.env.local
+
+# General Logs (protecting pedagogical progress-log.md)
+*.log
+!progress-log.md

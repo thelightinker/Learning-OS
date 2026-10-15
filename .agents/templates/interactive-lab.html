@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning OS — Interactive Lab Template</title>
+  <style>
+    :root {
+      --bg-main: #0f172a;
+      --bg-panel: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-sky: #38bdf8;
+      --accent-purple: #a855f7;
+      --accent-green: #22c55e;
+      --accent-red: #ef4444;
+      --border-color: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+    body { background-color: var(--bg-main); color: var(--text-main); line-height: 1.5; padding: 1.5rem; display: flex; justify-content: center; }
+    .container { max-width: 800px; width: 100%; display: flex; flex-direction: column; gap: 1.5rem; }
+    header { border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; }
+    h1 { font-size: 1.5rem; color: var(--accent-sky); margin-bottom: 0.5rem; }
+    .badge { display: inline-block; font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 4px; background-color: var(--bg-panel); color: var(--accent-purple); border: 1px solid var(--border-color); }
+    .card { background-color: var(--bg-panel); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; }
+    h2 { font-size: 1.1rem; color: var(--text-main); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .step-num { display: inline-flex; width: 24px; height: 24px; border-radius: 50%; background-color: var(--accent-sky); color: var(--bg-main); align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; }
+    .predict-group { display: flex; flex-direction: column; gap: 0.5rem; margin: 1rem 0; }
+    .predict-btn { background-color: var(--bg-main); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.75rem 1rem; border-radius: 6px; text-align: left; cursor: pointer; transition: all 0.2s; }
+    .predict-btn:hover { border-color: var(--accent-sky); }
+    .predict-btn.selected { border-color: var(--accent-sky); background-color: rgba(56, 189, 248, 0.1); }
+    .canvas-container { width: 100%; height: 200px; background-color: var(--bg-main); border: 1px solid var(--border-color); border-radius: 6px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .controls { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+    .slider-row { display: flex; justify-content: space-between; align-items: center; }
+    input[type=range] { flex: 1; margin: 0 1rem; accent-color: var(--accent-sky); }
+    button.action-btn { background-color: var(--accent-sky); color: var(--bg-main); border: none; font-weight: bold; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; transition: opacity 0.2s; }
+    button.action-btn:hover { opacity: 0.9; }
+    button.copy-btn { background-color: var(--accent-green); color: var(--bg-main); }
+    #error-box { display: none; background-color: rgba(239, 68, 68, 0.1); border: 1px solid var(--accent-red); color: var(--accent-red); padding: 1rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; }
+    .notification { display: none; background-color: rgba(34, 197, 94, 0.2); border: 1px solid var(--accent-green); color: var(--accent-green); padding: 0.75rem; border-radius: 6px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">Phòng Lab Mô Phỏng Tương Tác</span>
+      <h1>Khảo Sát Hệ Động Lực: [Tên Khái Niệm]</h1>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">Áp dụng mô hình Dự đoán &rarr; Thao tác &rarr; Giải thích nguyên lý.</p>
+    </header>
+
+    <div id="error-box"></div>
+
+    <!-- Bước 1: Dự đoán -->
+    <section class="card" id="step-predict">
+      <h2><span class="step-num">1</span> Dự Đoán Hiện Tượng</h2>
+      <p>Điều gì sẽ xảy ra khi [tham số tải] tăng vượt quá ngưỡng chịu đựng của kiến trúc phân tán?</p>
+      <div class="predict-group">
+        <button class="predict-btn" onclick="selectPrediction(this, 'A')">A. Hệ thống tự động chuyển tiếp mượt mà không gây nghẽn</button>
+        <button class="predict-btn" onclick="selectPrediction(this, 'B')">B. Hàng đợi tràn bộ đệm dẫn đến sụp đổ dây chuyền (Cascading Failure)</button>
+        <button class="predict-btn" onclick="selectPrediction(this, 'C')">C. Tốc độ xử lý tăng tỷ lệ thuận với số lượng yêu cầu</button>
+      </div>
+      <button class="action-btn" id="btn-confirm-predict" onclick="confirmPrediction()" disabled>Xác Nhận Dự Đoán Để Mở Khóa Thí Nghiệm</button>
+    </section>
+
+    <!-- Bước 2: Thao tác thí nghiệm -->
+    <section class="card" id="step-manipulate" style="opacity: 0.5; pointer-events: none;">
+      <h2><span class="step-num">2</span> Thao Tác & Quan Sát Trực Quan</h2>
+      <div class="canvas-container">
+        <svg id="lab-canvas" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 150" width="100%" height="100%">
+          <rect x="50" y="40" width="80" height="70" rx="4" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+          <text x="90" y="80" fill="#f8fafc" font-size="12" text-anchor="middle">Hàng Đợi</text>
+          <path d="M 130 75 L 210 75" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4"/>
+          <rect x="210" y="40" width="100" height="70" rx="4" fill="#1e293b" stroke="#22c55e" stroke-width="2" id="server-box"/>
+          <text x="260" y="80" fill="#f8fafc" font-size="12" text-anchor="middle" id="server-text">Worker (1x)</text>
+          <circle id="status-light" cx="330" cy="50" r="6" fill="#22c55e"/>
+        </svg>
+      </div>
+      <div class="controls">
+        <div class="slider-row">
+          <span>Tải Yêu Cầu (req/s): <strong id="val-load">50</strong></span>
+          <input type="range" id="slider-load" min="10" max="200" value="50" oninput="updateSimulation()">
+        </div>
+        <div class="slider-row">
+          <span>Khả Năng Xử Lý (concurrency): <strong id="val-concurrency">20</strong></span>
+          <input type="range" id="slider-concurrency" min="5" max="50" value="20" oninput="updateSimulation()">
+        </div>
+      </div>
+    </section>
+
+    <!-- Bước 3: Đóng gói và Xuất kết quả -->
+    <section class="card" id="step-explain" style="display: none;">
+      <h2><span class="step-num">3</span> Đúc Rút Nguyên Lý & Nộp Kết Quả</h2>
+      <p id="explain-text" style="margin-bottom: 1rem; color: var(--text-muted);"></p>
+      <div class="notification" id="copy-notify">Đã sao chép kết quả thí nghiệm vào Clipboard! Hãy dán vào chat để Agent chấm điểm.</div>
+      <button class="action-btn copy-btn" style="width: 100%; margin-top: 0.5rem;" onclick="copyLabReceipt()">Sao Chép Kết Quả Lab Để Nộp Bài</button>
+    </section>
+  </div>
+
+  <script>
+    // Bắt lỗi tự thân theo chuẩn kiến trúc
+    window.onerror = function(msg, url, line) {
+      var box = document.getElementById('error-box');
+      if (box) {
+        box.style.display = 'block';
+        box.innerText = 'Lỗi Runtime trong Web Lab: ' + msg + ' (Dòng ' + line + ')';
+      }
+      return false;
+    };
+
+    var state = {
+      module: "M01_concept_lab",
+      selectedPrediction: null,
+      trialsCount: 0,
+      loadTested: [],
+      masteryScore: "100%"
+    };
+
+    function selectPrediction(btn, choice) {
+      document.querySelectorAll('.predict-btn').forEach(function(b) { b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      state.selectedPrediction = choice;
+      document.getElementById('btn-confirm-predict').disabled = false;
+    }
+
+    function confirmPrediction() {
+      document.getElementById('step-manipulate').style.opacity = '1';
+      document.getElementById('step-manipulate').style.pointerEvents = 'auto';
+      document.getElementById('btn-confirm-predict').innerText = 'Đã Khóa Dự Đoán (Lựa chọn ' + state.selectedPrediction + ')';
+      document.getElementById('btn-confirm-predict').disabled = true;
+      document.getElementById('step-explain').style.display = 'block';
+      updateSimulation();
+    }
+
+    function updateSimulation() {
+      state.trialsCount++;
+      var load = parseInt(document.getElementById('slider-load').value, 10);
+      var conc = parseInt(document.getElementById('slider-concurrency').value, 10);
+      document.getElementById('val-load').innerText = load;
+      document.getElementById('val-concurrency').innerText = conc;
+
+      if (!state.loadTested.includes(load)) {
+        state.loadTested.push(load);
+      }
+
+      var serverBox = document.getElementById('server-box');
+      var statusLight = document.getElementById('status-light');
+      var explainText = document.getElementById('explain-text');
+
+      var ratio = load / (conc * 3);
+      if (ratio > 1.2) {
+        serverBox.setAttribute('stroke', '#ef4444');
+        statusLight.setAttribute('fill', '#ef4444');
+        explainText.innerText = "Trạng thái Quá Tải: Tốc độ yêu cầu (" + load + ") vượt quá năng lực xử lý (" + (conc * 3) + "). Hàng đợi bắt đầu phình to và tăng độ trễ (latency spike). Dự đoán B là hoàn toàn chính xác.";
+      } else if (ratio > 0.8) {
+        serverBox.setAttribute('stroke', '#38bdf8');
+        statusLight.setAttribute('fill', '#38bdf8');
+        explainText.innerText = "Trạng thái Bão Hòa: Hệ thống vận hành ở 80-100% công suất. Đạt thông lượng tối ưu.";
+      } else {
+        serverBox.setAttribute('stroke', '#22c55e');
+        statusLight.setAttribute('fill', '#22c55e');
+        explainText.innerText = "Trạng thái Ổn Định: Hệ thống dư thừa tài nguyên. Phản hồi tức thì.";
+      }
+    }
+
+    function copyLabReceipt() {
+      var receipt = "[LAB_RECEIPT]\n" +
+        "module: \"" + state.module + "\"\n" +
+        "prediction: \"" + state.selectedPrediction + "\"\n" +
+        "trials_count: " + state.trialsCount + "\n" +
+        "params_tested: {\"load\": " + document.getElementById('slider-load').value + ", \"concurrency\": " + document.getElementById('slider-concurrency').value + "}\n" +
+        "conclusion: \"Thực nghiệm chứng minh nghẽn hàng đợi khi tỷ lệ tải vượt ngưỡng chịu đựng.\"\n" +
+        "mastery_score: \"" + state.masteryScore + "\"\n" +
+        "[/LAB_RECEIPT]";
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(receipt).then(showNotify);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = receipt;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showNotify();
+      }
+    }
+
+    function showNotify() {
+      var n = document.getElementById('copy-notify');
+      n.style.display = 'block';
+      setTimeout(function() { n.style.display = 'none'; }, 4000);
+    }
+  </script>
+</body>
+</html>

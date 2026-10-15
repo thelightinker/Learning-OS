@@ -1,0 +1,31 @@
+{
+  "$schema": "schemas/manifest-lock.schema.json",
+  "components": {
+    "ARCHITECTURE.md": "37cd30f5a2db74d5bdccf006e4ff4c5fdbd6cf6c25d2f02bb862e6f80136a7bc",
+    "VERSION": "b63cb7e2da6c97b173dd51f6e02957e7b18702967e0721f033948789834896cd",
+    "agent/learning-architect.md": "090a2f12be6db70c82705b7a1bc433f76f8ce919a28c78b31d40ff6820be8108",
+    "mcp_config.json": "d8e397af03b5b032f21d0aa967086f0c78b33c87b76f2e9898ae0a144df7de02",
+    "memory/MEMORY.md": "40f1654472b0af1f64628ab1da3496ec5486a1a7d9bd00b1fe38f34fa0ee1ea3",
+    "memory/feedback-history.md": "0fc53ff6e8a4805d33ea9c2ae2f26006a02238c2dd31cbd601adf96a5586cd63",
+    "memory/project-conventions.md": "936f538bb0f21bb3556ad3f95e02427a4a086833dc24d7e5e068eb00f6ad7c90",
+    "memory/tech-decisions.md": "f399bd7fe5df5a463fa766660335ce37c2ec76d10a389f0267fd5992ea8ac805",
+    "memory/user-preferences.md": "40f445232c8072d7e1f74bf0828fc08216f5da39e039b50687f6336a1dc1be71",
+    "rules/pedagogical-invariants.md": "283beec2f3e1cb6696edca523247477ee2bf3221d6c680f24b8f6ebfaa33e7b8",
+    "rules/verbatim-quarantine.md": "5506cca82b6b6861dc1f9aed9472057c49c169041772b384ffba73c3f2449d0c",
+    "rules/visual-strategy.md": "04b6a8f2bb572e729bd9f84b19231a0aeab7febe70f68fb3de1db58875d6336f",
+    "scripts/catalog_inbox.py": "9e575a6d7f6df4f10ef33267a8348c11e603dcae9ca09fe35a93334d7bdfc921",
+    "scripts/extract_segment.py": "66dcca0e5c0fd12037b53c0d8dfc86f4415bbcebcf138d6c9f1e68bed28560ac",
+    "scripts/verify_system.py": "26843c2726532488ce0baf0ac943048618da5c74ee682ae7078003fff78dbc24",
+    "skills/diagnostic-rubric-clinician/SKILL.md": "a92ebf081da0e9abecd9c3ce9e1db5f03a31c5401b9af0a9cf59a64fe56339fa",
+    "skills/interactive-lab-architect/SKILL.md": "73ebfae8e60ccf3feea3f212af172c2325b2733150808b288bdfef75125a0e2d",
+    "skills/socratic-companion-crafter/SKILL.md": "ac7bb6fb18710923278d2052995a90ac68e8bb758573dadcb357e5bd94cc8a98",
+    "workflows/assess.md": "c6a8ac807e350974fc3fab2a14e9630f4602d3aa86e029be0312d3c3546531a5",
+    "workflows/generate-lesson.md": "07bfdc1cda89a26d75dee748d90769466f63d22fc570ac790508dcc762496371",
+    "workflows/ingest.md": "af89c1f07c67da1cb8abc2c76b5312f8f438fd35cf3966bc39870de29443a569",
+    "workflows/prep-course.md": "1364becf57afc59a42a590bdf59eac2c549b858f2e185354e8c387004d54ccc6",
+    "workflows/session.md": "0a27fd1a709147e7a817b9aacbed189e178f765eb3c673f1e24513fb4925b9dc"
+  },
+  "kitVersion": "2026.10.15",
+  "manifestSha256": "9e39d77bffa92a6d2e7030e9ff935969f97f9bfcf06d8dee4a79f3f2df7e4a5d",
+  "schemaVersion": "1.0.0"
+}

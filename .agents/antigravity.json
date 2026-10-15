@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0.0",
+  "runtime": "antigravity",
+  "requiredCliCommands": [
+    "changelog",
+    "plugin",
+    "update"
+  ],
+  "phases": {
+    "discovery": {
+      "rules": "rules",
+      "templates": "templates",
+      "workflows": "workflows"
+    },
+    "mcp": {
+      "workspaceConfig": "mcp_config.json"
+    },
+    "orchestration": {
+      "workflows": ["prep-course", "ingest", "generate-lesson", "session", "assess"],
+      "agents": ["learning-architect"],
+      "scripts": ["catalog_inbox.py", "extract_segment.py", "verify_system.py"]
+    },
+    "plugin": {
+      "defaultOutput": "dist/antigravity-plugin"
+    },
+    "validation": {
+      "linter": "scripts/verify_system.py"
+    }
+  }
+}

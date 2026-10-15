@@ -1,0 +1,176 @@
+{
+  "$schema": "schemas/manifest.schema.json",
+  "agents": {
+    "learning-architect": {
+      "model": "inherit",
+      "path": "agent/learning-architect.md",
+      "requires": {
+        "skills": {
+          "diagnostic-rubric-clinician": "^1.1.0",
+          "interactive-lab-architect": "^1.1.0",
+          "socratic-companion-crafter": "^1.1.0"
+        }
+      },
+      "tools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash",
+        "Grep",
+        "Glob"
+      ],
+      "version": "1.1.0"
+    }
+  },
+  "contracts": {
+    "componentApi": "1.0.0",
+    "memorySchema": "1.0.0",
+    "rulesApi": "1.0.0",
+    "workflowApi": "1.0.0"
+  },
+  "kitVersion": "2026.10.15",
+  "rules": {
+    "pedagogical-invariants": {
+      "path": "rules/pedagogical-invariants.md",
+      "priority": "P0",
+      "trigger": "always_on",
+      "version": "1.0.0"
+    },
+    "verbatim-quarantine": {
+      "description": "Quy tắc bảo toàn nguồn tuyệt đối, kiểm soát băm SHA-256 và cách ly tệp nguyên văn source_verbatim.md.",
+      "path": "rules/verbatim-quarantine.md",
+      "priority": "P0",
+      "trigger": "model_decision",
+      "version": "1.0.0"
+    },
+    "visual-strategy": {
+      "description": "Quy tắc chiến lược trực quan hóa, cổng quyết định Visual/Lab, bảng màu WCAG AA và rào chắn offline.",
+      "path": "rules/visual-strategy.md",
+      "priority": "P1",
+      "trigger": "model_decision",
+      "version": "1.0.0"
+    }
+  },
+  "schemaVersion": "1.0.0",
+  "skills": {
+    "diagnostic-rubric-clinician": {
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit"
+      ],
+      "path": "skills/diagnostic-rubric-clinician/SKILL.md",
+      "scripts": [],
+      "version": "1.1.0"
+    },
+    "interactive-lab-architect": {
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit"
+      ],
+      "path": "skills/interactive-lab-architect/SKILL.md",
+      "scripts": [],
+      "version": "1.1.0"
+    },
+    "socratic-companion-crafter": {
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit"
+      ],
+      "path": "skills/socratic-companion-crafter/SKILL.md",
+      "scripts": [],
+      "version": "1.1.0"
+    }
+  },
+  "support": {
+    "official": [
+      "Gemini CLI",
+      "Google Antigravity"
+    ],
+    "portableFormat": true
+  },
+  "topology": {
+    "orchestrator": null,
+    "spectrumPosition": "standard",
+    "type": "standard"
+  },
+  "workflows": {
+    "assess": {
+      "artifactOutputs": [
+        "progress.md",
+        "progress-log.md"
+      ],
+      "path": "workflows/assess.md",
+      "requires": {
+        "agents": [
+          "learning-architect"
+        ],
+        "skills": [
+          "diagnostic-rubric-clinician"
+        ]
+      },
+      "version": "1.1.0"
+    },
+    "generate-lesson": {
+      "artifactOutputs": [
+        "lesson.md",
+        "source_verbatim.md"
+      ],
+      "path": "workflows/generate-lesson.md",
+      "requires": {
+        "agents": [
+          "learning-architect"
+        ],
+        "skills": [
+          "socratic-companion-crafter",
+          "interactive-lab-architect"
+        ]
+      },
+      "version": "1.1.0"
+    },
+    "ingest": {
+      "artifactOutputs": [
+        "syllabus.md",
+        "progress.md"
+      ],
+      "path": "workflows/ingest.md",
+      "requires": {
+        "agents": [
+          "learning-architect"
+        ],
+        "skills": []
+      },
+      "version": "1.0.0"
+    },
+    "prep-course": {
+      "artifactOutputs": [
+        "catalog.json"
+      ],
+      "path": "workflows/prep-course.md",
+      "requires": {
+        "agents": [
+          "learning-architect"
+        ],
+        "skills": []
+      },
+      "version": "1.0.0"
+    },
+    "session": {
+      "artifactOutputs": [
+        "progress.md"
+      ],
+      "path": "workflows/session.md",
+      "requires": {
+        "agents": [
+          "learning-architect"
+        ],
+        "skills": [
+          "diagnostic-rubric-clinician"
+        ]
+      },
+      "version": "1.1.0"
+    }
+  }
+}

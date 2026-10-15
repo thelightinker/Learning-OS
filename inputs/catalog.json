@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.0.0",
+  "inbox_path": "D:/Downloads/AI Agent Kits/Agent Kits/Learning OS/inputs/inbox",
+  "total_documents": 2,
+  "documents": [
+    {
+      "filename": "Bài giảng Thiết kế web.pdf",
+      "rel_path": "D:/Downloads/AI Agent Kits/Agent Kits/Learning OS/inputs/inbox/Bài giảng Thiết kế web.pdf",
+      "size_bytes": 6862265,
+      "line_count": 186220,
+      "sha256": "11b6f56086d0fef11a639251a4e33fc70fb158be69363764aa4975a3f40645ba",
+      "archetype": "book",
+      "recommended_track": "Verbatim Line-Slice Track",
+      "rationale": "Tài liệu dài có cấu trúc chương mục rõ ràng. Nên học sâu từng chương nguyên bản kèm Socratic checkpoints.",
+      "headings_count": 503,
+      "outline_preview": [
+        {
+          "line": 381,
+          "level": 1,
+          "title": "���\u0000�P�U�acz��1\u0012��/��ᶾ�\u0007��w?�-�"
+        },
+        {
+          "line": 730,
+          "level": 1,
+          "title": "���<rH\t\u0000"
+        },
+        {
+          "line": 946,
+          "level": 1,
+          "title": "\u0005�5"
+        },
+        {
+          "line": 1034,
+          "level": 1,
+          "title": "3��"
+        },
+        {
+          "line": 1509,
+          "level": 1,
+          "title": "�cy�N�a괙��0���,]���5k���a��m�w�����hK��<�}������ݽc���dx��5?�\\�t�\"^ųfN���d^�c��!��d�o�^4Pw�H��Z��\"nܐj�SV�d���ʕ��Ғ`i\"�\u0015̆�\u0014Rzu��vl����\u0001\u000eqf�\u0014ˆb6����W/o_6\u0010����6i֢e���v�;v�ҵ{��>}�"
+        },
+        {
+          "line": 2039,
+          "level": 1,
+          "title": "=���&�\u0018Ռ��\u0018\b�\u001f�\u0018�8"
+        },
+        {
+          "line": 3710,
+          "level": 1,
+          "title": "��؅}����!�C�v\u001a�TR��QPV��ݼ\u0015���qD>��񞌯'b���\u00131g��G���׵\"t�k"
+        },
+        {
+          "line": 5079,
+          "level": 1,
+          "title": "�W�|cv���.�I9/v�I��\t�?�>��>\u001b�k�"
+        }
+      ]
+    },
+    {
+      "filename": "CSDLII_GiáoTrình_VersionFinal_NTHQuyên.pdf",
+      "rel_path": "D:/Downloads/AI Agent Kits/Agent Kits/Learning OS/inputs/inbox/CSDLII_GiáoTrình_VersionFinal_NTHQuyên.pdf",
+      "size_bytes": 3915735,
+      "line_count": 104888,
+      "sha256": "396943324aaf9c06a9a9ec9eb554767610c6456328768f478cfb533308a453a2",
+      "archetype": "book",
+      "recommended_track": "Verbatim Line-Slice Track",
+      "rationale": "Tài liệu dài có cấu trúc chương mục rõ ràng. Nên học sâu từng chương nguyên bản kèm Socratic checkpoints.",
+      "headings_count": 360,
+      "outline_preview": [
+        {
+          "line": 1512,
+          "level": 1,
+          "title": "n�j�?Qںh�I�\u0012F��܆\u0007 ד��?V��$ͼ�fyF�MpV���\u000f["
+        },
+        {
+          "line": 1534,
+          "level": 1,
+          "title": "�p���"
+        },
+        {
+          "line": 2224,
+          "level": 1,
+          "title": "�\u00071�sa�� ��\u0001%�3�L�\u0007D%"
+        },
+        {
+          "line": 2341,
+          "level": 1,
+          "title": "�\u0001\u000fk��"
+        },
+        {
+          "line": 3040,
+          "level": 1,
+          "title": ""
+        },
+        {
+          "line": 4292,
+          "level": 1,
+          "title": "E.E��\u0001L_ź��D^*���=VzX�A��ԧs�k��,"
+        },
+        {
+          "line": 4335,
+          "level": 1,
+          "title": "��-�(\u0003\u0005�\u0019�H�o\u0002��2C��h"
+        },
+        {
+          "line": 4776,
+          "level": 1,
+          "title": "\u0018�^�4��krڀ�lD"
+        }
+      ]
+    }
+  ]
+}
